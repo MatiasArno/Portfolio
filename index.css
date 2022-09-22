@@ -225,6 +225,12 @@ body {
             font-size: 2.79em;
         }
 
+        @media (min-width: 768px) {
+            .home__title {                
+                font-size: 3.96em;
+            }
+        }
+
         .home__subtitle {
             width: 81%;
             margin: 0;
@@ -232,6 +238,12 @@ body {
             font-weight: 400;
             font-size: 1.62em;
             text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .home__subtitle {                
+                font-size: 2.34em;
+            }            
         }
     
     .about-me {
@@ -355,7 +367,7 @@ body {
                 background-color: #ffffffbe;
             }
 
-    .services {
+    .services, .portfolio {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -369,14 +381,14 @@ body {
     }
 
     @media (min-width: 768px) {
-        .services {
-            flex-direction: inherit;
+        .services, .portfolio {
+            flex-direction: initial;
             flex-wrap: wrap;
             justify-content: space-around;
         }
     }
 
-        .services__service {
+        .services__service, .portfolio__work {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -385,12 +397,12 @@ body {
         }
 
         @media (min-width: 768px) {
-            .services__service {
+            .services__service, .portfolio__work {
                 width: 30%;
             }
         }
 
-            .services__title {
+            .services__title, .portfolio__title {
                 margin: 0;
                 font-weight: 800;
                 color: #6affd5;
@@ -399,14 +411,14 @@ body {
             }
 
             @media (min-width: 768px) {
-                .services__title {
+                .services__title, .portfolio__title {
                     width: 100%;
                     text-align: center;
                     font-size: 3.6em;
                 }
             }
 
-                .services__service-icon {
+                .services__service-icon, .portfolio__work-icon {
                     margin: 0;
                     color: #55efc4 ;
                     text-align: center;
@@ -414,12 +426,12 @@ body {
                 }
 
                 @media (min-width:768px) {
-                    .services__service-icon {
+                    .services__service-icon, .portfolio__work-icon {
                         font-size: 20.7vmin;
                     }
                 }
 
-                .services__service-title {
+                .services__service-title, .portfolio__work-title {
                     margin: 0;
                     padding: 27px 0;
                     font-weight: 700;
@@ -427,12 +439,12 @@ body {
                 }
 
                 @media (min-width:768px) {
-                    .services__service-title {
+                    .services__service-title, .portfolio__work-title {
                         font-size: 2em;
                     }
                 }
 
-                .services__service-text {
+                .services__service-text, .portfolio__work-text {
                     margin: 0;
                     padding: 0 0 54px 0;
                     font-weight: 100;
@@ -442,7 +454,7 @@ body {
                 }
 
                 @media (min-width:768px) {
-                    .services__service-text {
+                    .services__service-text, .portfolio__work-text {
                         font-size: 2em;
                         font-size: 1.17em;
                     }
@@ -453,6 +465,7 @@ body {
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        padding: 90px;
 
         width: 100%;
         min-height: 100vh;
@@ -531,15 +544,21 @@ body {
 
     .footer {
         width: 100%;
-        height: 63vh;
+        height: 54vh;
 
         z-index: 0;
+    }
+
+    @media (min-width: 768px) {
+        .footer {
+            height: 45vh;
+        }
     }
 
         .footer__background {
             position: absolute;
             width: 100%;
-            height: 63vh;
+            height: 54vh;
 
             background-color: #2e2e2e;
             background-image: url("./media/img/dots.png");
@@ -547,6 +566,12 @@ body {
             background-size: cover;
 
             z-index: -1;
+        }
+
+        @media (min-width: 768px) {
+            .footer__background {
+                height: 45vh;                
+            }
         }
 
         .footer__content {
@@ -583,6 +608,7 @@ body {
             @media (min-width: 768px) {
                 .footer__title {
                     font-size: 4em;
+                    margin: 0 0 6px 0;
                 }
             }
 
@@ -606,3 +632,32 @@ body {
                     font-size: 1.62em;
                     color: rgb(75, 174, 255);
                 }
+
+    .home-link {
+        position: fixed;
+        bottom: 18px;
+        right: 30px;
+    }            
+
+    .home-link__button {
+        border: none;
+        border-radius: 3px;
+        padding: 3px 9px;
+        font-size: 1.44em;
+        font-weight: 600;
+        cursor: pointer;
+        background-color: #74ffd7b9;
+    }
+
+    .home-link__button:hover {
+        background-color: #74ffd8ce;
+    }
+
+    .home-link__button--black {
+        background-color: #121212b9;
+        color: #ffe799;
+    }
+
+    .home-link__button--black:hover {
+        background-color: #121212dd;
+    }

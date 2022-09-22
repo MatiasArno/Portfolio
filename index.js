@@ -1,3 +1,13 @@
+function changeMenuStyleAccordingUrl(currentUrl, menuLogoEl, menuEl, menuLinksEl) {
+
+    if (currentUrl.includes("contact")) {
+
+        menuEl.style.backgroundColor = "rgba(255, 255, 255, 0.54)";
+        menuLogoEl.style.color = "black";
+        menuLinksEl.forEach(item => item.style.color = "rgb(67, 67, 67)");
+    }
+}
+
 function controlMenu(menuEl, menuModalEl, middleBarEl) {
 
     if(menuEl.style.height != "100vh") {
@@ -30,11 +40,16 @@ function main() {
     const menuButtonEl = document.querySelector(".menu__detail");
     const menuModalEl = document.querySelector(".menu__modal");
     const middleBarEl = document.querySelector(".menu__middle-bar");
+    const currentUrl = window.location.href;
+    const menuLogoEl = document.querySelector(".menu__logo");
+    const menuLinksEl = document.querySelectorAll(".menu__links");
+
+    changeMenuStyleAccordingUrl(currentUrl, menuLogoEl, menuEl, menuLinksEl);
 
     menuButtonEl.addEventListener("click", () => {
 
         controlMenu(menuEl, menuModalEl, middleBarEl);
-    })
+    });
 }
 
 main();

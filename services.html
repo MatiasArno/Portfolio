@@ -5,16 +5,99 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <script defer src="https://kit.fontawesome.com/4c0749b77c.js" crossorigin="anonymous"></script>
+    
+    <link rel="stylesheet" href="./index.css">
+    <script defer src="./index.js"></script>
 
     <title>Matias Arno</title>
 </head>
 
 <body>
-    <section class="top-menu"></section>
 
-    <section class="services"></section>
+    <!-- COMPONENTE REUTILIZABLE -->
+
+    <header class="menu">
+            <h2 class="menu__logo">.ARNO()</h2>
     
-    <section class="contact" id="contact"></section>
+            <div class="menu__detail">
+                <div class="menu__bars-button"></div>
+                <div class="menu__bars-button menu__middle-bar"></div>
+                <div class="menu__bars-button"></div>
+            </div>
+    
+            <div class="menu__modal">
+    
+                <h2 class="menu__title">Matías Arno</h2>
+    
+                <div class="menu__division-bars"></div>
+    
+                <div class="menu__list">
+                    <a class="menu__links" href="./portfolio.html"> Portfolio </a>
+                    <a class="menu__links" href="./services.html"> Services </a>
+                    <a class="menu__links" href="./contact.html"> Contact </a>
+                </div>
+    
+                <div class="menu__division-bars"></div>
+            </div>
+    
+    </header>
+
+    <!-- ADMINISTRADO DESDE CMS -->
+
+    <section class="services" id="services">
+        <h2 class="services__title">Services</h2>
+ 
+        <div class="services__service">
+ 
+             <div class="services__service-icon"><i class="fa-solid fa-code"></i></div>
+ 
+             <h3 class="services__service-title">Service 1</h3>
+ 
+             <p class="services__service-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis molestias animi esse rem maxime aperiam eos, corrupti velit illo exercitationem modi reiciendis maiores.</p>
+        </div>
+ 
+        <div class="services__service">
+ 
+             <div class="services__service-icon"><i class="fa-solid fa-code"></i></div>
+ 
+             <h3 class="services__service-title">Service 2</h3>
+ 
+             <p class="services__service-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis molestias animi esse rem maxime aperiam eos, corrupti velit illo exercitationem modi reiciendis maiores.</p>
+        </div>
+ 
+        <div class="services__service">
+ 
+             <div class="services__service-icon"><i class="fa-solid fa-code"></i></div>
+ 
+             <h3 class="services__service-title">Service 3</h3>
+ 
+             <p class="services__service-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis molestias animi esse rem maxime aperiam eos, corrupti velit illo exercitationem modi reiciendis maiores.</p>
+         </div>
+    </section>
+
+    <!-- COMPONENTE REUTILIZABLE -->
+
+    <section class="footer" id="footer">
+        <div class="footer__background"></div>
+
+        <div class="footer__content">
+            <h2 class="footer__title">.ARNO()</h2>
+
+            <div class="footer__social-media">
+                <p class="footer__social-media-items">Instagram 
+                    <a href="https://www.instagram.com/arno.matias/" target="_blank"><i class="fa-brands fa-instagram footer__social-media-icons"></i></a>      </p>
+                <p class="footer__social-media-items">GitHub 
+                    <a href="https://github.com/MatiasArno" target="_blank"><i class="fa-brands fa-github footer__social-media-icons"></i></a>         </p>
+                <p class="footer__social-media-items">LinkedIn 
+                    <a href="https://www.linkedin.com/in/matias-agustin-arno-9b8526a6/" target="_blank"><i class="fa-brands fa-linkedin footer__social-media-icons"></i></a>       </p>
+            </div>
+
+        </div>
+    </section>
+
+        <a href="./index.html" class="home-link"><button class="home-link__button">Home</button></a>
+
 </body>
 
 </html>
