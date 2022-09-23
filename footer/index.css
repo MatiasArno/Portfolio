@@ -1,0 +1,90 @@
+.footer {
+    width: 100%;
+    height: 54vh;
+
+    z-index: 0;
+}
+
+@media (min-width: 768px) {
+    .footer {
+        height: 45vh;
+    }
+}
+
+    .footer__background {
+        position: absolute;
+        width: 100%;
+        height: 54vh;
+
+        background-color: #2e2e2e;
+        background-image: url("../media/img/dots.png");
+        background-attachment: fixed;
+        background-size: cover;
+
+        z-index: -1;
+    }
+
+    @media (min-width: 768px) {
+        .footer__background {
+            height: 45vh;                
+        }
+    }
+
+    .footer__content {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        width: 100%;
+        height: 100%;
+
+        background-color: rgba(64, 64, 64, 0.18);
+        backdrop-filter: blur(1.8px);
+
+        z-index: 0;
+    }
+
+    @media (min-width: 768px) {
+        .footer__content {
+            flex-direction: inherit;
+            justify-content: space-around;
+        }
+    }
+
+        .footer__title {
+            margin: 0 0 36px 0;
+            font-family: 'Azeret Mono', monospace;          
+            font-weight: 900;
+            font-size: 3.6em;
+            color: #55efc4;
+        }
+        
+        @media (min-width: 768px) {
+            .footer__title {
+                font-size: 4em;
+                margin: 0 0 6px 0;
+            }
+        }
+
+            .footer__social-media-items {
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                margin: 12.6px 0;
+                font-weight: 400;
+                font-size: 1.35em;
+                color: white;
+            }
+
+            .footer__social-media-icons {
+                margin: 0 0 0 18px;
+                font-size: 1.5em;
+                color: rgb(47, 158, 249);
+            }
+
+            .footer__social-media-icons:hover {
+                font-size: 1.62em;
+                color: rgb(75, 174, 255);
+            }
