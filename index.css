@@ -32,7 +32,6 @@ body {
         align-items: center;
 
         background-color: #2e2e2e;
-        /* background-image: url("./media/img/dots.png"); */
         background-attachment: fixed;
         background-size: cover;
 
@@ -114,7 +113,6 @@ body {
             left: 3%;
             min-width: 405px;
             min-height: 405px;
-            background-image: url("./media/img/profile.png");
             background-size: contain;
 
             z-index: 0;
