@@ -32,7 +32,7 @@ body {
         align-items: center;
 
         background-color: #2e2e2e;
-        background-image: url("./media/img/dots.png");
+        /* background-image: url("./media/img/dots.png"); */
         background-attachment: fixed;
         background-size: cover;
 
