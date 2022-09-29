@@ -255,6 +255,7 @@ body {
                     padding: 27px 0;
                     font-weight: 700;
                     font-size: 1.8em;
+                    text-align: center;
                 }
 
                 @media (min-width:768px) {

@@ -4,9 +4,11 @@ function fillHomePageContent(data) {
     const homeSubtitleEl = document.querySelector(".home__subtitle");
     const homeEl = document.querySelector(".home");
 
-    homeEl.style.backgroundImage = `url("${data.includes.Asset[1].fields.file.url}")`;
-    homeTitleEl.innerHTML = data.items[0].fields.title;
-    homeSubtitleEl.innerHTML = data.items[0].fields.subtitle;
+    if(homeEl) {
+        homeEl.style.backgroundImage = `url("${data.imageURL}")`;
+        homeTitleEl.innerHTML = data.title;
+        homeSubtitleEl.innerHTML = data.subtitle;
+    }
 }
 
 function fillAboutmePageContent(data) {
@@ -16,25 +18,79 @@ function fillAboutmePageContent(data) {
     const aboutmeTextEl = document.querySelector(".about-me__text");
     const aboutmeHashtagsArr = document.querySelectorAll(".about-me__hashtag");
 
-    aboutmeImageEl.style.backgroundImage = `url("${data.includes.Asset[0].fields.file.url}")`;
-    aboutmeTitleEl.innerHTML = data.items[1].fields.title;
-    aboutmeTextEl.innerHTML = data.items[1].fields.text;
-    aboutmeHashtagsArr.forEach((hashtag, i) => hashtag.innerHTML = data.items[1].fields.hashtags[i]);
+    if(aboutmeTitleEl) {
+        aboutmeImageEl.style.backgroundImage = `url("${data.backgroundImageURL}")`;
+        aboutmeTitleEl.innerHTML = data.title;
+        aboutmeTextEl.innerHTML = data.text;
+        aboutmeHashtagsArr.forEach((hashtag, i) => hashtag.innerHTML = data.hashtags[i]);
+    }
+}
+
+function createServiceCards(data) {
+
+    const servicesEl = document.querySelector(".services");
+    const servicesTemplateEl = document.querySelector(".services-template");
+
+    const servicesServiceIconEl = servicesTemplateEl.content.querySelector(".services__service-icon");
+    servicesServiceIconEl.innerHTML = data.serviceIcon;
+
+    const servicesServiceTitleEl = servicesTemplateEl.content.querySelector(".services__service-title");
+    servicesServiceTitleEl.innerHTML = data.serviceTitle;
+
+    const servicesServiceTextEl = servicesTemplateEl.content.querySelector(".services__service-text");
+    servicesServiceTextEl.innerHTML = data.serviceText;
+
+    const clone = document.importNode(servicesTemplateEl.content, true);
+    servicesEl.appendChild(clone);
 }
 
 function getCmsData() {
 
+    function createDataObj(data) {
+
+        let dataObj = {
+            home: {title: "", subtitle: "", imageURL: ""},
+            aboutme: {title: "", text: "", hashtags: [], backgroundImageURL: ""},
+            services: []
+        };
+
+        data.items.forEach( (item, i) => {
+
+            if(item.fields.serviceTitle) {
+                dataObj.services.push(item);
+
+            } else if(item.fields.aboutmeTitle) {
+                dataObj.aboutme.title = item.fields.aboutmeTitle;
+                dataObj.aboutme.text = item.fields.aboutmeText;
+                dataObj.aboutme.hashtags = item.fields.aboutmeHashtags;
+                dataObj.aboutme.backgroundImageURL = data.includes.Asset[0].fields.file.url;
+
+            } else if(item.fields.homeTitle) {
+                dataObj.home.title = item.fields.homeTitle;
+                dataObj.home.subtitle = item.fields.homeSubtitle;
+                dataObj.home.imageURL = data.includes.Asset[1].fields.file.url;
+            }
+        });
+
+        return dataObj;
+    }
+
     return fetch("https://cdn.contentful.com/spaces/sezd397y3ob3/environments/master/entries?access_token=d30jfPjygQpzALTd6rttnxuBwCL9oUdLRc2L_fSzyiQ")
         .then( resp => resp.json())
-        .then( data => data);
+        .then( data => createDataObj(data));
 }
 
 function main() {
 
-    getCmsData().then( data => {
+    getCmsData().then( dataObj => {
 
-        fillHomePageContent(data);
-        fillAboutmePageContent(data);
+        fillHomePageContent(dataObj.home);
+        fillAboutmePageContent(dataObj.aboutme);
+
+        dataObj.services.forEach((service, i) => {
+
+            createServiceCards(service.fields);
+        });
     });
     
     const menuEl = document.querySelector(".menu");
@@ -43,7 +99,11 @@ function main() {
     
     createHeader(menuEl);
     changeMenuStyle(menuEl);
-    if(contactEl) { createContact(contactEl) }
+
+    if(contactEl) { 
+        createContact(contactEl) 
+    };
+
     createFooter(footerEl);
 }
 
