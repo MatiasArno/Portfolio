@@ -199,7 +199,7 @@ body {
         z-index: 0;
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: 1080px) {
         .services, .portfolio {
             flex-direction: initial;
             flex-wrap: wrap;
@@ -215,7 +215,7 @@ body {
             margin: 0;
         }
 
-        @media (min-width: 768px) {
+        @media (min-width: 1080px) {
             .services__service, .portfolio__work {
                 width: 30%;
             }
@@ -229,7 +229,7 @@ body {
                 font-size: 2.43em;
             }
 
-            @media (min-width: 768px) {
+            @media (min-width: 1080px) {
                 .services__title, .portfolio__title {
                     width: 100%;
                     text-align: center;
@@ -244,7 +244,7 @@ body {
                     font-size: 23.4vmin;
                 }
 
-                @media (min-width:768px) {
+                @media (min-width: 1080px) {
                     .services__service-icon, .portfolio__work-icon {
                         font-size: 20.7vmin;
                     }
@@ -258,7 +258,7 @@ body {
                     text-align: center;
                 }
 
-                @media (min-width:768px) {
+                @media (min-width: 1080px) {
                     .services__service-title, .portfolio__work-title {
                         font-size: 2em;
                     }
@@ -269,11 +269,12 @@ body {
                     padding: 0 0 54px 0;
                     font-weight: 100;
                     width: 81%;
+                    height: 120px;
                     text-align: justify;  
                     font-size: 1.35em;
                 }
 
-                @media (min-width:768px) {
+                @media (min-width: 1080px) {
                     .services__service-text, .portfolio__work-text {
                         font-size: 2em;
                         font-size: 1.17em;
