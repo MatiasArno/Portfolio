@@ -12,7 +12,7 @@ function createContact(contactEl) {
         <label for="message" class="contact__form-label">Message</label>
         <textarea name="message" id="message" resize="none" class="contact__inputs contact__inputs--textarea"></textarea>
 
-        <input type="submit" value="Send" class="contact__form-button">
+        <input type="submit" name="submit" value="Send" class="contact__form-button">
     </form>`;
 
     const formEl = document.querySelector(".contact__form");
@@ -38,6 +38,21 @@ function createContact(contactEl) {
         fetch(url, options)
             .then( res => res.json())
             .catch( error => console.error('Error:', error))
-            .then( res => console.log("The message has been sent!", res));
+            .then( res => {
+
+                const sendButton = document.querySelector(".contact__form-button");
+
+                const resetValues = () => {
+                    formEl.submit.value = "Send";
+                    sendButton.style.color = "#ffeaa7";
+                };
+
+                formEl.submit.value = "The message has been sent!";
+                formEl.name.value = "";
+                formEl.message.value = "";
+                formEl.email.value = "";
+                sendButton.style.color = "rgb(114, 192, 255)";
+                setTimeout(resetValues, 3000);
+            });
     });
 }
