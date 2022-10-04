@@ -281,6 +281,11 @@ body {
                     }
                 }
 
+                .portfolio__work-link {
+                    color: rgb(104, 187, 255);
+                    font-weight: 900;
+                }
+
     .home-link {
         position: fixed;
         bottom: 18px;

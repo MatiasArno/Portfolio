@@ -30,18 +30,42 @@ function createServiceCards(data) {
 
     const servicesEl = document.querySelector(".services");
     const servicesTemplateEl = document.querySelector(".services-template");
+    
+    if(servicesEl) {
 
-    const servicesServiceIconEl = servicesTemplateEl.content.querySelector(".services__service-icon");
-    servicesServiceIconEl.innerHTML = data.serviceIcon;
+        const servicesServiceIconEl = servicesTemplateEl.content.querySelector(".services__service-icon");
+        servicesServiceIconEl.innerHTML = data.serviceIcon;
+    
+        const servicesServiceTitleEl = servicesTemplateEl.content.querySelector(".services__service-title");
+        servicesServiceTitleEl.innerHTML = data.serviceTitle;
+    
+        const servicesServiceTextEl = servicesTemplateEl.content.querySelector(".services__service-text");
+        servicesServiceTextEl.innerHTML = data.serviceText;
+    
+        const clone = document.importNode(servicesTemplateEl.content, true);
+        servicesEl.appendChild(clone);
+    }
+}
 
-    const servicesServiceTitleEl = servicesTemplateEl.content.querySelector(".services__service-title");
-    servicesServiceTitleEl.innerHTML = data.serviceTitle;
+function createPortfolioCards(data) {
 
-    const servicesServiceTextEl = servicesTemplateEl.content.querySelector(".services__service-text");
-    servicesServiceTextEl.innerHTML = data.serviceText;
+    const portfolioEl = document.querySelector(".portfolio");
+    const portfolioTemplateEl = document.querySelector(".portfolio-template");
 
-    const clone = document.importNode(servicesTemplateEl.content, true);
-    servicesEl.appendChild(clone);
+    if(portfolioEl) {
+
+        const portfolioWorkIconEl = portfolioTemplateEl.content.querySelector(".portfolio__work-icon");
+        portfolioWorkIconEl.innerHTML = data.portfolioIcon;
+    
+        const portfolioWorkTitleEl = portfolioTemplateEl.content.querySelector(".portfolio__work-title");
+        portfolioWorkTitleEl.innerHTML = data.portfolioTitle;
+    
+        const portfolioWorkTextEl = portfolioTemplateEl.content.querySelector(".portfolio__work-text");
+        portfolioWorkTextEl.innerHTML = data.portfolioText;
+    
+        const clone = document.importNode(portfolioTemplateEl.content, true);
+        portfolioEl.appendChild(clone);
+    }
 }
 
 function getCmsData() {
@@ -51,10 +75,11 @@ function getCmsData() {
         let dataObj = {
             home: {title: "", subtitle: "", imageURL: ""},
             aboutme: {title: "", text: "", hashtags: [], backgroundImageURL: ""},
-            services: []
+            services: [],
+            portfolio: []
         };
 
-        data.items.forEach( (item, i) => {
+        data.items.forEach( (item) => {
 
             if(item.fields.serviceTitle) {
                 dataObj.services.push(item);
@@ -69,6 +94,9 @@ function getCmsData() {
                 dataObj.home.title = item.fields.homeTitle;
                 dataObj.home.subtitle = item.fields.homeSubtitle;
                 dataObj.home.imageURL = data.includes.Asset[1].fields.file.url;
+
+            } else if(item.fields.portfolioTitle) {
+                dataObj.portfolio.push(item);
             }
         });
 
@@ -86,11 +114,8 @@ function main() {
 
         fillHomePageContent(dataObj.home);
         fillAboutmePageContent(dataObj.aboutme);
-
-        dataObj.services.forEach((service, i) => {
-
-            createServiceCards(service.fields);
-        });
+        dataObj.services.forEach( service => createServiceCards(service.fields) );
+        dataObj.portfolio.forEach( work => createPortfolioCards(work.fields) );
     });
     
     const menuEl = document.querySelector(".menu");
