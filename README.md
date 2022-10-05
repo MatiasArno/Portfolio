@@ -1,3 +1,3 @@
 # Portfolio
 
-https://matiasarno.github.io/portfolio/
+https://matiasarno.github.io/Portfolio/
